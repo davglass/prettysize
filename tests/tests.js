@@ -15,8 +15,32 @@ var tests = {
         topic: function() {
             return pretty(12);
         },
-        'should print kilobytes': function(topic) {
-            assert.equal(topic, '12 bytes');
+        'should print bytes': function(topic) {
+            assert.equal(topic, '12 Bytes');
+        }
+    },
+    'bytes with no space': {
+        topic: function() {
+            return pretty(12, true);
+        },
+        'should print bytes': function(topic) {
+            assert.equal(topic, '12Bytes');
+        }
+    },
+    'bytes with no space and one char': {
+        topic: function() {
+            return pretty(12, true, true);
+        },
+        'should print bytes': function(topic) {
+            assert.equal(topic, '12B');
+        }
+    },
+    'bytes with space and one char': {
+        topic: function() {
+            return pretty(12, false, true);
+        },
+        'should print bytes': function(topic) {
+            assert.equal(topic, '12 B');
         }
     },
     'kilobytes': {
@@ -30,8 +54,8 @@ var tests = {
             topic: function() {
                 return pretty(1024);
             },
-            'should be exactly 1.0 Kb': function(topic) {
-                assert.equal(topic, '1.0 Kb');
+            'should be exactly 1 Kb': function(topic) {
+                assert.equal(topic, '1 Kb');
             }
         }
     },
@@ -46,8 +70,8 @@ var tests = {
             topic: function() {
                 return pretty(1024 * 1024);
             },
-            'should be exactly 1.0 MB': function(topic) {
-                assert.equal(topic, '1.0 MB');
+            'should be exactly 1 MB': function(topic) {
+                assert.equal(topic, '1 MB');
             }
         }
     },
@@ -62,8 +86,8 @@ var tests = {
             topic: function() {
                 return pretty(1024 * 1024 * 1024);
             },
-            'should be exactly 1.0 GB': function(topic) {
-                assert.equal(topic, '1.0 GB');
+            'should be exactly 1 GB': function(topic) {
+                assert.equal(topic, '1 GB');
             }
         }
     },
@@ -78,8 +102,8 @@ var tests = {
             topic: function() {
                 return pretty(1024 * 1024 * 1024 * 1024);
             },
-            'should be exactly 1.0 TB': function(topic) {
-                assert.equal(topic, '1.0 TB');
+            'should be exactly 1 TB': function(topic) {
+                assert.equal(topic, '1 TB');
             }
         }
     },
@@ -94,8 +118,8 @@ var tests = {
             topic: function() {
                 return pretty(1024 * 1024 * 1024 * 1024 * 1024);
             },
-            'should be exactly 1.0 PB': function(topic) {
-                assert.equal(topic, '1.0 PB');
+            'should be exactly 1 PB': function(topic) {
+                assert.equal(topic, '1 PB');
             }
         }
     },
@@ -110,8 +134,8 @@ var tests = {
             topic: function() {
                 return pretty(1024 * 1024 * 1024 * 1024 * 1024 * 1024);
             },
-            'should be exactly 1.0 EB': function(topic) {
-                assert.equal(topic, '1.0 EB');
+            'should be exactly 1 EB': function(topic) {
+                assert.equal(topic, '1 EB');
             }
         }
     }

@@ -40,3 +40,28 @@ It supports the following sizes:
 * PB
 * EB
 
+Arguments
+---------
+
+```javascript
+pretty(123456, true, true);
+
+/*
+
+First arg is size
+Second argument is to remove the space from the output
+Third argument is to use a single character for the size.
+
+*/
+
+
+var str = pretty(1024 * 1024, true);
+//str = "1MB"
+
+var str = pretty(123456789, true, true);
+//str = "117.7M"
+
+var str = pretty(123456789, false, true);
+//str = "117.7 M"
+
+```

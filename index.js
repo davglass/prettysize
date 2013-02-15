@@ -5,21 +5,32 @@ http://yuilibrary.com/license/
 */
 
 var sizes = [
-    'kb', 'mb', 'gb', 'tb', 'pb', 'eb'
+    'Bytes', 'Kb', 'MB', 'GB', 'TB', 'PB', 'EB'
 ];
 
-module.exports = function(size) {
-    var mysize = size + ' bytes';
+/**
+Pretty print a size from bytes
+@method pretty
+@param {Number} size The number to pretty print
+@param {Boolean} [nospace=false] Don't print a space
+@param {Boolean} [one=false] Only print one character
+*/
+
+module.exports = function(size, nospace, one) {
+    var mysize;
 
     sizes.forEach(function(f, id) {
-        id++;
-        var s = Math.pow(1024, id);
-        f = f.toUpperCase();
-        if (f === 'KB') {
-            f = 'Kb';
+        if (one) {
+            f = f.slice(0, 1);
         }
+        var s = Math.pow(1024, id),
+            fixed;
         if (size >= s) {
-            mysize = (size / s).toFixed(1) + ' ' + f;
+            fixed = String((size / s).toFixed(1));
+            if (fixed.indexOf('.0') === fixed.length - 2) {
+                fixed = fixed.slice(0, -2);
+            }
+            mysize = fixed + (nospace ? '' : ' ') + f;
         }
     });
 
