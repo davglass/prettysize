@@ -138,7 +138,40 @@ var tests = {
                 assert.equal(topic, '1 EB');
             }
         }
-    }
+    },
+    'zero bytes': {
+        topic: function() {
+            return pretty(0);
+        },
+        'should print bytes': function(topic) {
+          console.log("----", topic)
+            assert.equal(topic, '0 Bytes');
+        }
+    },
+    'zero bytes with no space': {
+        topic: function() {
+            return pretty(0, true);
+        },
+        'should print bytes': function(topic) {
+            assert.equal(topic, '0Bytes');
+        }
+    },
+    'zero bytes with no space and one char': {
+        topic: function() {
+            return pretty(0, true, true);
+        },
+        'should print bytes': function(topic) {
+            assert.equal(topic, '0B');
+        }
+    },
+    'zero bytes with space and one char': {
+        topic: function() {
+            return pretty(0, false, true);
+        },
+        'should print bytes': function(topic) {
+            assert.equal(topic, '0 B');
+        }
+    },
 };
 
 vows.describe('prettysize').addBatch(tests).export(module);
