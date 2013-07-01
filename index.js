@@ -5,7 +5,7 @@ http://yuilibrary.com/license/
 */
 
 var sizes = [
-    'Bytes', 'Kb', 'MB', 'GB', 'TB', 'PB', 'EB'
+    'Bytes', 'kB', 'MB', 'GB', 'TB', 'PB', 'EB'
 ];
 
 /**
