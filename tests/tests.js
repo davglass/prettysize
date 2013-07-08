@@ -48,14 +48,14 @@ var tests = {
             return pretty(123456);
         },
         'should print kilobytes': function(topic) {
-            assert.equal(topic, '120.6 Kb');
+            assert.equal(topic, '120.6 kB');
         },
         'exact': {
             topic: function() {
                 return pretty(1024);
             },
-            'should be exactly 1 Kb': function(topic) {
-                assert.equal(topic, '1 Kb');
+            'should be exactly 1 kB': function(topic) {
+                assert.equal(topic, '1 kB');
             }
         }
     },
