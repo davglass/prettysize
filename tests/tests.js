@@ -172,6 +172,22 @@ var tests = {
             assert.equal(topic, '0 B');
         }
     },
+    'two decimal places': {
+        topic: function() {
+            return pretty(123456789, false, false, 2);
+        },
+        'should print bytes': function(topic) {
+            assert.equal(topic, '117.74 MB');
+        }
+    },
+    'three decimal places': {
+        topic: function() {
+            return pretty(123456789, false, false, 3);
+        },
+        'should print bytes': function(topic) {
+            assert.equal(topic, '117.738 MB');
+        }
+    },
 };
 
 vows.describe('prettysize').addBatch(tests).export(module);

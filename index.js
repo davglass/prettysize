@@ -14,10 +14,12 @@ Pretty print a size from bytes
 @param {Number} size The number to pretty print
 @param {Boolean} [nospace=false] Don't print a space
 @param {Boolean} [one=false] Only print one character
+@param {Number} [places=1] Number of decimal places to return
 */
 
-module.exports = function(size, nospace, one) {
+module.exports = function(size, nospace, one, places) {
     var mysize, f;
+    places = places || 1;
 
     sizes.forEach(function(f, id) {
         if (one) {
@@ -26,7 +28,7 @@ module.exports = function(size, nospace, one) {
         var s = Math.pow(1024, id),
             fixed;
         if (size >= s) {
-            fixed = String((size / s).toFixed(1));
+            fixed = String((size / s).toFixed(places));
             if (fixed.indexOf('.0') === fixed.length - 2) {
                 fixed = fixed.slice(0, -2);
             }
