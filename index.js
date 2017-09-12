@@ -19,8 +19,16 @@ Pretty print a size from bytes
 */
 
 module.exports = (size, nospace, one, places) => {
+    if (typeof nospace === 'object') {
+        const opts = nospace;
+        nospace = opts.nospace;
+        one = opts.one;
+        places = opts.places || 1;
+    } else {
+        places = places || 1;
+    }
+
     let mysize;
-    places = places || 1;
 
     sizes.forEach((unit, id) => {
         if (one) {

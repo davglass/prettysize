@@ -79,20 +79,41 @@ describe('prettysize', () => {
         assert.equal(pretty(0, true), '0Bytes');
     });
 
+    it('should print zero bytes with no space [opts]', () => {
+        assert.equal(pretty(0, {nospace: true}), '0Bytes');
+    });
+
     it('should print zero bytes with no space and one char', () => {
         assert.equal(pretty(0, true, true), '0B');
+    });
+
+    it('should print zero bytes with no space and one char [opts]', () => {
+        assert.equal(pretty(0, {nospace: true, one: true}), '0B');
     });
 
     it('should print zero bytes with space and one char', () => {
         assert.equal(pretty(0, false, true), '0 B');
     });
 
+    it('should print zero bytes with space and one char [opts]', () => {
+        assert.equal(pretty(0, {one: true}), '0 B');
+    });
+
     it('should print, two decimal places', () => {
         assert.equal(pretty(123456789, false, false, 2), '117.74 MB');
+    });
+
+    it('should print, two decimal places [opts]', () => {
+        assert.equal(pretty(123456789, {places: 2}), '117.74 MB');
     });
 
     it('should print three decimal places', () => {
         assert.equal(pretty(123456789, false, false, 3), '117.738 MB');
     });
+
+    it('should print three decimal places [opts]', () => {
+        assert.equal(pretty(123456789, {places: 3}), '117.738 MB');
+    });
+
 
 });
