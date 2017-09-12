@@ -55,19 +55,19 @@ Forth argument is the number of decimal places to return, default is 1.
 */
 
 
-var str = pretty(1024 * 1024, true);
+const str = pretty(1024 * 1024, true);
 //str = "1MB"
 
-var str = pretty(123456789, true, true);
+const str = pretty(123456789, true, true);
 //str = "117.7M"
 
-var str = pretty(123456789, false, true);
+const str = pretty(123456789, false, true);
 //str = "117.7 M"
 
-var str = pretty(123456789, false, true, 2);
+const str = pretty(123456789, false, true, 2);
 //str = "117.74 M"
 
-var str = pretty(123456789, false, true, 3);
+const str = pretty(123456789, false, true, 3);
 //str = "117.738 M"
 
 ```
