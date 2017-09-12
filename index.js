@@ -21,9 +21,9 @@ module.exports = function(size, nospace, one, places) {
     let mysize, f;
     places = places || 1;
 
-    sizes.forEach(function(f, id) {
+    sizes.forEach((unit, id) => {
         if (one) {
-            f = f.slice(0, 1);
+            unit = unit.slice(0, 1);
         }
         const s = Math.pow(1024, id);
         let fixed;
@@ -32,7 +32,7 @@ module.exports = function(size, nospace, one, places) {
             if (fixed.indexOf('.0') === fixed.length - 2) {
                 fixed = fixed.slice(0, -2);
             }
-            mysize = fixed + (nospace ? '' : ' ') + f;
+            mysize = fixed + (nospace ? '' : ' ') + unit;
         }
     });
 
