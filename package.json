@@ -17,7 +17,6 @@
     "megs"
   ],
   "scripts": {
-    "pretest": "jshint --config ./node_modules/yui-lint/jshint.json ./index.js",
     "test": "istanbul cover --print both vows -- --spec ./tests/*.js",
     "publish-coverage": "codecov"
   },

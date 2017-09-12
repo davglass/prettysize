@@ -4,7 +4,7 @@ Code licensed under the BSD License:
 http://yuilibrary.com/license/
 */
 
-var sizes = [
+const sizes = [
     'Bytes', 'kB', 'MB', 'GB', 'TB', 'PB', 'EB'
 ];
 
@@ -18,15 +18,15 @@ Pretty print a size from bytes
 */
 
 module.exports = function(size, nospace, one, places) {
-    var mysize, f;
+    let mysize, f;
     places = places || 1;
 
     sizes.forEach(function(f, id) {
         if (one) {
             f = f.slice(0, 1);
         }
-        var s = Math.pow(1024, id),
-            fixed;
+        const s = Math.pow(1024, id);
+        let fixed;
         if (size >= s) {
             fixed = String((size / s).toFixed(places));
             if (fixed.indexOf('.0') === fixed.length - 2) {

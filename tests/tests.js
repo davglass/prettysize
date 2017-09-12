@@ -1,8 +1,8 @@
-var vows = require('vows'),
+const vows = require('vows'),
     assert = require('assert'),
     pretty = require('../index');
 
-var tests = {
+const tests = {
     'loading': {
         topic: function() {
             return pretty;
