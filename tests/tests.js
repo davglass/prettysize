@@ -115,5 +115,9 @@ describe('prettysize', () => {
         assert.equal(pretty(123456789, {places: 3}), '117.738 MB');
     });
 
+    it('should print three decimal places no space [opts]', () => {
+        assert.equal(pretty(123456789, {nospace: true, places: 3}), '117.738MB');
+    });
+
 
 });
