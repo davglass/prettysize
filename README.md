@@ -18,15 +18,15 @@ npm install prettysize
 
 ```javascript
 
-var pretty = require('prettysize');
+const pretty = require('prettysize');
 
-var str = pretty(1024);
+const str = pretty(1024);
 //str = "1 kB"
 
-var str = pretty(1024 * 1024);
+const str = pretty(1024 * 1024);
 //str = "1 MB"
 
-var str = pretty(123456789);
+const str = pretty(123456789);
 //str = "117.7 MB"
 ```
 
