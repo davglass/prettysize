@@ -6,8 +6,8 @@ Helper utility to provide pretty printed file sizes (best used for logging or CL
 Build Status
 ------------
 
-[![Build Status](https://secure.travis-ci.org/davglass/prettysize.png?branch=master)](http://travis-ci.org/davglass/prettysize)
-
+[![Build Status](https://secure.travis-ci.org/davglass/prettysize.svg?branch=master)](http://travis-ci.org/davglass/prettysize)
+[![codecov](https://codecov.io/gh/davglass/prettysize/branch/master/graph/badge.svg)](https://codecov.io/gh/davglass/prettysize)
 
 Usage
 -----
