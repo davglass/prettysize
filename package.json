@@ -4,10 +4,11 @@
   "version": "0.1.0",
   "main": "./index.js",
   "devDependencies": {
-    "vows": "*",
-    "yui-lint": "~0.1.1",
+    "codecov": "^2.3.0",
+    "istanbul": "~0.1.8",
     "jshint": "~0.9.0",
-    "istanbul": "~0.1.8"
+    "vows": "*",
+    "yui-lint": "~0.1.1"
   },
   "keywords": [
     "size",
@@ -17,7 +18,8 @@
   ],
   "scripts": {
     "pretest": "jshint --config ./node_modules/yui-lint/jshint.json ./index.js",
-    "test": "istanbul cover --print both vows -- --spec ./tests/*.js"
+    "test": "istanbul cover --print both vows -- --spec ./tests/*.js",
+    "publish-coverage": "codecov"
   },
   "bugs": {
     "url": "http://github.com/davglass/prettysize/issues"
