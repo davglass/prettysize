@@ -20,13 +20,13 @@ npm install prettysize
 
 const pretty = require('prettysize');
 
-const str = pretty(1024);
+const onekB = pretty(1024);
 //str = "1 kB"
 
-const str = pretty(1024 * 1024);
+const oneMB = pretty(1024 * 1024);
 //str = "1 MB"
 
-const str = pretty(123456789);
+const hundredMB = pretty(123456789);
 //str = "117.7 MB"
 ```
 
@@ -55,19 +55,19 @@ Forth argument is the number of decimal places to return, default is 1.
 */
 
 
-const str = pretty(1024 * 1024, true);
+const oneMb = pretty(1024 * 1024, true);
 //str = "1MB"
 
-const str = pretty(123456789, true, true);
+let str = pretty(123456789, true, true);
 //str = "117.7M"
 
-const str = pretty(123456789, false, true);
+   str = pretty(123456789, false, true);
 //str = "117.7 M"
 
-const str = pretty(123456789, false, true, 2);
+   str = pretty(123456789, false, true, 2);
 //str = "117.74 M"
 
-const str = pretty(123456789, false, true, 3);
+   str = pretty(123456789, false, true, 3);
 //str = "117.738 M"
 
 ```

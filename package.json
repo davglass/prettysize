@@ -17,7 +17,7 @@
     "megs"
   ],
   "scripts": {
-    "lint": "eslint index.js",
+    "lint": "eslint --fix index.js",
     "pretest": "npm run lint",
     "test": "istanbul cover --print both vows -- --spec ./tests/*.js",
     "publish-coverage": "codecov"
