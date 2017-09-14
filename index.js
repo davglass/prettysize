@@ -17,7 +17,7 @@ Pretty print a size from bytes
 @param {Number} [places=1] Number of decimal places to return
 */
 
-module.exports = function(size, nospace, one, places) {
+module.exports = (size, nospace, one, places) => {
     let mysize, f;
     places = places || 1;
 
