@@ -18,7 +18,7 @@ Pretty print a size from bytes
 */
 
 module.exports = (size, nospace, one, places) => {
-    let mysize, f;
+    let mysize;
     places = places || 1;
 
     sizes.forEach((unit, id) => {
@@ -39,8 +39,8 @@ module.exports = (size, nospace, one, places) => {
     // zero handling
     // always prints in Bytes
     if (!mysize) {
-        f = (one ? sizes[0].slice(0, 1) : sizes[0]);
-        mysize = '0' + (nospace ? '' : ' ') + f;
+        let unit = (one ? sizes[0].slice(0, 1) : sizes[0]);
+        mysize = '0' + (nospace ? '' : ' ') + unit;
     }
 
     return mysize;
