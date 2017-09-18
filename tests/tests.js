@@ -144,7 +144,6 @@ const tests = {
             return pretty(0);
         },
         'should print bytes': function(topic) {
-          console.log("----", topic)
             assert.equal(topic, '0 Bytes');
         }
     },
