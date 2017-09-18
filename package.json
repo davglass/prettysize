@@ -5,10 +5,10 @@
   "main": "./index.js",
   "devDependencies": {
     "codecov": "^2.3.0",
+    "eslint": "^4.6.1",
     "istanbul": "~0.1.8",
     "jshint": "~0.9.0",
-    "vows": "*",
-    "yui-lint": "~0.1.1"
+    "vows": "*"
   },
   "keywords": [
     "size",
@@ -17,7 +17,8 @@
     "megs"
   ],
   "scripts": {
-    "pretest": "jshint --config ./node_modules/yui-lint/jshint.json ./index.js",
+    "lint": "eslint --fix index.js",
+    "pretest": "npm run lint",
     "test": "istanbul cover --print both vows -- --spec ./tests/*.js",
     "publish-coverage": "codecov"
   },

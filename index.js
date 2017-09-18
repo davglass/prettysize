@@ -1,10 +1,11 @@
+'use strict';
 /*
 Copyright (c) 2013, Yahoo! Inc. All rights reserved.
 Code licensed under the BSD License:
 http://yuilibrary.com/license/
 */
 
-var sizes = [
+const sizes = [
     'Bytes', 'kB', 'MB', 'GB', 'TB', 'PB', 'EB'
 ];
 
@@ -17,30 +18,30 @@ Pretty print a size from bytes
 @param {Number} [places=1] Number of decimal places to return
 */
 
-module.exports = function(size, nospace, one, places) {
-    var mysize, f;
+module.exports = (size, nospace, one, places) => {
+    let mysize;
     places = places || 1;
 
-    sizes.forEach(function(f, id) {
+    sizes.forEach((unit, id) => {
         if (one) {
-            f = f.slice(0, 1);
+            unit = unit.slice(0, 1);
         }
-        var s = Math.pow(1024, id),
-            fixed;
+        const s = Math.pow(1024, id);
+        let fixed;
         if (size >= s) {
             fixed = String((size / s).toFixed(places));
             if (fixed.indexOf('.0') === fixed.length - 2) {
                 fixed = fixed.slice(0, -2);
             }
-            mysize = fixed + (nospace ? '' : ' ') + f;
+            mysize = fixed + (nospace ? '' : ' ') + unit;
         }
     });
 
     // zero handling
     // always prints in Bytes
     if (!mysize) {
-        f = (one ? sizes[0].slice(0, 1) : sizes[0]);
-        mysize = '0' + (nospace ? '' : ' ') + f;
+        let unit = (one ? sizes[0].slice(0, 1) : sizes[0]);
+        mysize = '0' + (nospace ? '' : ' ') + unit;
     }
 
     return mysize;
