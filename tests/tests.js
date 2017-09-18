@@ -1,192 +1,98 @@
-const vows = require('vows'),
-    assert = require('assert'),
+const assert = require('assert'),
     pretty = require('../index');
 
-const tests = {
-    'loading': {
-        topic: function() {
-            return pretty;
-        },
-        'should export a function': function(topic) {
-            assert.isFunction(topic);
-        }
-    },
-    'bytes': {
-        topic: function() {
-            return pretty(12);
-        },
-        'should print bytes': function(topic) {
-            assert.equal(topic, '12 Bytes');
-        }
-    },
-    'bytes with no space': {
-        topic: function() {
-            return pretty(12, true);
-        },
-        'should print bytes': function(topic) {
-            assert.equal(topic, '12Bytes');
-        }
-    },
-    'bytes with no space and one char': {
-        topic: function() {
-            return pretty(12, true, true);
-        },
-        'should print bytes': function(topic) {
-            assert.equal(topic, '12B');
-        }
-    },
-    'bytes with space and one char': {
-        topic: function() {
-            return pretty(12, false, true);
-        },
-        'should print bytes': function(topic) {
-            assert.equal(topic, '12 B');
-        }
-    },
-    'kilobytes': {
-        topic: function() {
-            return pretty(123456);
-        },
-        'should print kilobytes': function(topic) {
-            assert.equal(topic, '120.6 kB');
-        },
-        'exact': {
-            topic: function() {
-                return pretty(1024);
-            },
-            'should be exactly 1 kB': function(topic) {
-                assert.equal(topic, '1 kB');
-            }
-        }
-    },
-    'megs': {
-        topic: function() {
-            return pretty(123456789);
-        },
-        'should print megabytes': function(topic) {
-            assert.equal(topic, '117.7 MB');
-        },
-        'exact': {
-            topic: function() {
-                return pretty(1024 * 1024);
-            },
-            'should be exactly 1 MB': function(topic) {
-                assert.equal(topic, '1 MB');
-            }
-        }
-    },
-    'gigs': {
-        topic: function() {
-            return pretty(12345678901);
-        },
-        'should print gigabytes': function(topic) {
-            assert.equal(topic, '11.5 GB');
-        },
-        'exact': {
-            topic: function() {
-                return pretty(1024 * 1024 * 1024);
-            },
-            'should be exactly 1 GB': function(topic) {
-                assert.equal(topic, '1 GB');
-            }
-        }
-    },
-    'teras': {
-        topic: function() {
-            return pretty(1234567890123);
-        },
-        'should print terabytes': function(topic) {
-            assert.equal(topic, '1.1 TB');
-        },
-        'exact': {
-            topic: function() {
-                return pretty(1024 * 1024 * 1024 * 1024);
-            },
-            'should be exactly 1 TB': function(topic) {
-                assert.equal(topic, '1 TB');
-            }
-        }
-    },
-    'petas': {
-        topic: function() {
-            return pretty(1234567890123456);
-        },
-        'should print petaabytes': function(topic) {
-            assert.equal(topic, '1.1 PB');
-        },
-        'exact': {
-            topic: function() {
-                return pretty(1024 * 1024 * 1024 * 1024 * 1024);
-            },
-            'should be exactly 1 PB': function(topic) {
-                assert.equal(topic, '1 PB');
-            }
-        }
-    },
-    'exabyte': {
-        topic: function() {
-            return pretty(1234567890123456789);
-        },
-        'should print exabytes': function(topic) {
-            assert.equal(topic, '1.1 EB');
-        },
-        'exact': {
-            topic: function() {
-                return pretty(1024 * 1024 * 1024 * 1024 * 1024 * 1024);
-            },
-            'should be exactly 1 EB': function(topic) {
-                assert.equal(topic, '1 EB');
-            }
-        }
-    },
-    'zero bytes': {
-        topic: function() {
-            return pretty(0);
-        },
-        'should print bytes': function(topic) {
-            assert.equal(topic, '0 Bytes');
-        }
-    },
-    'zero bytes with no space': {
-        topic: function() {
-            return pretty(0, true);
-        },
-        'should print bytes': function(topic) {
-            assert.equal(topic, '0Bytes');
-        }
-    },
-    'zero bytes with no space and one char': {
-        topic: function() {
-            return pretty(0, true, true);
-        },
-        'should print bytes': function(topic) {
-            assert.equal(topic, '0B');
-        }
-    },
-    'zero bytes with space and one char': {
-        topic: function() {
-            return pretty(0, false, true);
-        },
-        'should print bytes': function(topic) {
-            assert.equal(topic, '0 B');
-        }
-    },
-    'two decimal places': {
-        topic: function() {
-            return pretty(123456789, false, false, 2);
-        },
-        'should print bytes': function(topic) {
-            assert.equal(topic, '117.74 MB');
-        }
-    },
-    'three decimal places': {
-        topic: function() {
-            return pretty(123456789, false, false, 3);
-        },
-        'should print bytes': function(topic) {
-            assert.equal(topic, '117.738 MB');
-        }
-    },
-};
+describe('prettysize', () => {
 
-vows.describe('prettysize').addBatch(tests).export(module);
+    it('should export a function', () => {
+        assert.ok(pretty);
+    });
+
+    it('should print bytes', () => {
+        assert.equal(pretty(12), '12 Bytes');
+    });
+
+    it('should print bytes with no space', () => {
+        assert.equal(pretty(12, true), '12Bytes');
+    });
+    
+    it('should print bytes with no space and one char', () => {
+        assert.equal(pretty(12, true, true), '12B');
+    });
+
+    it('should print bytes with space and one char', () => {
+        assert.equal(pretty(12, false, true), '12 B');
+    });
+    
+    it('should print kilobytes', () => {
+        assert.equal(pretty(123456), '120.6 kB');
+    });
+    
+    it('should print exact kilobytes', () => {
+        assert.equal(pretty(1024), '1 kB');
+    });
+    
+    it('should print megs', () => {
+        assert.equal(pretty(123456789), '117.7 MB');
+    });
+    
+    it('should print exact megs', () => {
+        assert.equal(pretty(1024 * 1024), '1 MB');
+    });
+    
+    it('should print gigs', () => {
+        assert.equal(pretty(12345678901), '11.5 GB');
+    });
+
+    it('should print exact gigs', () => {
+        assert.equal(pretty(1024 * 1024 * 1024), '1 GB');
+    });
+    
+    it('should print teras', () => {
+        assert.equal(pretty(1234567890123), '1.1 TB');
+    });
+
+    it('should print exact teras', () => {
+        assert.equal(pretty(1024 * 1024 * 1024 * 1024), '1 TB');
+    });
+    
+    it('should print petas', () => {
+        assert.equal(pretty(1234567890123456), '1.1 PB');
+    });
+    
+    it('should print exact petas', () => {
+        assert.equal(pretty(1024 * 1024 * 1024 * 1024 * 1024), '1 PB');
+    });
+    
+    it('should print exabyte', () => {
+        assert.equal(pretty(1234567890123456789), '1.1 EB');
+    });
+    
+    it('should print exact exobyte', () => {
+        assert.equal(pretty(1024 * 1024 * 1024 * 1024 * 1024 * 1024), '1 EB');
+    });
+
+    it('should print zero bytes', () => {
+        assert.equal(pretty(0), '0 Bytes');
+    });
+
+    it('should print zero bytes with no space', () => {
+        assert.equal(pretty(0, true), '0Bytes');
+    });
+
+    it('should print zero bytes with no space and one char', () => {
+        assert.equal(pretty(0, true, true), '0B');
+    });
+
+    it('should print zero bytes with space and one char', () => {
+        assert.equal(pretty(0, false, true), '0 B');
+    });
+
+    it('should print, two decimal places', () => {
+        assert.equal(pretty(123456789, false, false, 2), '117.74 MB');
+    });
+
+    it('should print three decimal places', () => {
+        assert.equal(pretty(123456789, false, false, 3), '117.738 MB');
+    });
+
+});
