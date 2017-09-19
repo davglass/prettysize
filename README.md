@@ -59,18 +59,18 @@ Forth argument is the number of decimal places to return, default is 1.
 
 
 let str = pretty(1024 * 1024, true);
-//str = "1MB"
+  //str = "1MB"
 
-    str = pretty(123456789, true, true);
+    str = pretty(123456789, {nospace: true}) // pretty(123456789, true, true);
   //str = "117.7M"
 
-    str = pretty(123456789, false, true);
+    str = pretty(123456789, {one: true}) // pretty(123456789, false, true);
   //str = "117.7 M"
 
-    str = pretty(123456789, false, true, 2);
+    str = pretty(123456789, {one: true, places: 2}) // pretty(123456789, false, true, 2);
   //str = "117.74 M"
 
-   str = pretty(123456789, false, true, 3);
+   str = pretty(123456789, {one: true, places: 3}) // pretty(123456789, false, true, 3);
  //str = "117.738 M"
 
 ```
