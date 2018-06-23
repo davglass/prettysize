@@ -24,7 +24,7 @@ module.exports = (size, nospace, one, places,stringOptional) => {
         nospace = opts.nospace;
         one = opts.one;
         places = opts.places || 1;
-        stringOptional = opts.stringOptional || false;
+        stringOptional = opts.stringOptional;
     } else {
         places = places || 1;
     }
