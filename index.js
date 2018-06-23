@@ -18,12 +18,13 @@ Pretty print a size from bytes
 @param {Number} [places=1] Number of decimal places to return
 */
 
-module.exports = (size, nospace, one, places) => {
+module.exports = (size, nospace, one, places,stringOptional) => {
     if (typeof nospace === 'object') {
         const opts = nospace;
         nospace = opts.nospace;
         one = opts.one;
         places = opts.places || 1;
+        stringOptional = opts.stringOptional || false;
     } else {
         places = places || 1;
     }
@@ -51,6 +52,9 @@ module.exports = (size, nospace, one, places) => {
         let unit = (one ? sizes[0].slice(0, 1) : sizes[0]);
         mysize = '0' + (nospace ? '' : ' ') + unit;
     }
-
+    
+    if (stringOptional === true)
+    	return Number.parseFloat(mysize);
+    
     return mysize;
 };
