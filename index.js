@@ -16,14 +16,16 @@ Pretty print a size from bytes
 @param {Boolean} [nospace=false] Don't print a space
 @param {Boolean} [one=false] Only print one character
 @param {Number} [places=1] Number of decimal places to return
+@param {Boolen} [numOnly] Return only the converted number and not size string
 */
 
-module.exports = function (size, nospace, one, places) {
+module.exports = function (size, nospace, one, places, numOnly) {
     if (typeof nospace === 'object') {
         var opts = nospace;
         nospace = opts.nospace;
         one = opts.one;
         places = opts.places || 1;
+        numOnly = opts.numOnly;
     } else {
         places = places || 1;
     }
@@ -53,6 +55,10 @@ module.exports = function (size, nospace, one, places) {
     if (!mysize) {
         var _unit = (one ? sizes[0].slice(0, 1) : sizes[0]);
         mysize = '0' + (nospace ? '' : ' ') + _unit;
+    }
+
+    if (numOnly) {
+        mysize = Number.parseFloat(mysize);
     }
 
     return mysize;

@@ -119,5 +119,13 @@ describe('prettysize', function () {
         assert.equal(pretty(123456789, {nospace: true, places: 3}), '117.738MB');
     });
 
+    it('should print only number no string', function () {
+        assert.equal(pretty(123456789, false, false, false, true), 117.7);
+    });
+
+    it('should print only number no string [opts]', function () {
+        assert.equal(pretty(123456789, {numOnly: true}), 117.7);
+    });
+
 
 });

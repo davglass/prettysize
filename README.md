@@ -51,7 +51,8 @@ pretty(123456, true, true, 2);
 First arg is size
 Second argument is to remove the space from the output
 Third argument is to use a single character for the size.
-Forth argument is the number of decimal places to return, default is 1. 
+Forth argument is the number of decimal places to return, default is 1.
+Fith argument is to return a converted number without the size string.
 */
 
 
@@ -69,5 +70,8 @@ let str = pretty(1024 * 1024, true);
 
    str = pretty(123456789, {one: true, places: 3}) // pretty(123456789, false, true, 3);
  //str = "117.738 M"
+
+   str = pretty(123456789, {numOnly: true}) // pretty(123456789, false, false, false, true);
+ //num = 117.7
 
 ```
