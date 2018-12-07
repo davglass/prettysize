@@ -3,9 +3,6 @@ PrettySize
 
 Helper utility to provide pretty printed file sizes (best used for logging or CLI output)
 
-*Note: as of version 1.x this module is now using some ES6+ features, if you are using this in a browser
-you need to transform your code so that this doesn't break.*
-
 Build Status
 ------------
 
