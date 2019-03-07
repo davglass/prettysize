@@ -119,6 +119,14 @@ describe('prettysize', function () {
         assert.equal(pretty(123456789, {nospace: true, places: 3}), '117.738MB');
     });
 
+    it('should print zero decimal places', function () {
+        assert.equal(pretty(123456789, false, false, 0), '118 MB');
+    });
+
+    it('should print zero decimal places [opts]', function () {
+        assert.equal(pretty(123456789, {places: 0}), '118 MB');
+    });
+
     it('should print only number no string', function () {
         assert.equal(pretty(123456789, false, false, false, true), 117.7);
     });
