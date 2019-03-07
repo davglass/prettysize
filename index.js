@@ -24,10 +24,10 @@ module.exports = function (size, nospace, one, places, numOnly) {
         var opts = nospace;
         nospace = opts.nospace;
         one = opts.one;
-        places = opts.places || 1;
+        places = (typeof opts.places === 'number') ? opts.places : 1;
         numOnly = opts.numOnly;
     } else {
-        places = places || 1;
+        places = (typeof places === 'number') ? places : 1;
     }
 
     var mysize;
