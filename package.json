@@ -4,7 +4,7 @@
   "version": "2.0.0",
   "main": "./index.js",
   "devDependencies": {
-    "codecov": "^2.3.0",
+    "codecov": "^3.7.1",
     "eslint": "^4.6.1",
     "mocha": "^3.5.3",
     "nyc": "^11.2.1"
